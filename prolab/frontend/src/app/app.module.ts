@@ -11,6 +11,9 @@ import { ZXingScannerModule } from '@zxing/ngx-scanner';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { DatePipe } from '@angular/common';
 
+import {MatButtonModule} from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -23,7 +26,9 @@ import { DatePipe } from '@angular/common';
     FormsModule,
     MatIconModule,
     ZXingScannerModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatButtonModule,
+    MatInputModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA], 
   providers: [

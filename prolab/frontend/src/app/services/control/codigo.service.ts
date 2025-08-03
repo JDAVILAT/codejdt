@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { environment } from "../../../environments/environment";
 import { HttpClient } from "@angular/common/http";
 import { Observable, map } from "rxjs";
-import * as XLSX from 'xlsx';
+
 @Injectable({
     providedIn: 'root'
 })
@@ -30,7 +30,6 @@ export class codigoService {
             })
         )
     }
-
 
     readExcel(codigo: string): Observable<{
         message: string,

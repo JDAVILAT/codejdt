@@ -18,11 +18,20 @@ export class AppComponent {
   availableDevices: MediaDeviceInfo[] = [];
   torchEnabled = false;
 
+  mostrarScan: boolean = true;
+  mostrarCodigo: boolean = false;
+  codigoEscaneadoInput: string = '';
+
   videoConstraints = {
     width: { ideal: 1280 },
     height: { ideal: 720 },
     facingMode: 'environment' // Preferir cámara trasera
   };
+
+  stateOptions: any[] = [
+    { label: 'Off', value: 'off' },
+    { label: 'On', value: 'on' }
+  ];
 
   constructor(
     private codigoService: codigoService
@@ -32,7 +41,7 @@ export class AppComponent {
 
   ngOnInit(): void {
     this.codeReader.listVideoInputDevices().then((videoInputDevices) => {
-      if(videoInputDevices.length > 0) {
+      if (videoInputDevices.length > 0) {
         this.selectedDevice = videoInputDevices[0]
       }
     }).catch((err) => this.mensajeSweetalert2('error', err));
@@ -56,16 +65,16 @@ export class AppComponent {
         if (r.data.length > 0 && r.respuesta) {
           this.isData = true;
           this.codigoEscaneado = r.data;
-          this.mensajeSweetalert2('success', 'El QR escaneado es correcto.');
+          this.mensajeSweetalert2('success', 'El QR o codigo es correcto.');
         } else {
           this.codigoEscaneado = [];
           this.isData = false;
-          this.mensajeSweetalert2('error', 'El QR escaneado no es correcto.');
+          this.mensajeSweetalert2('error', 'El QR o codigo no es correcto.');
         }
       },
       error: (err) => {
         this.codigoEscaneado = [];
-        this.mensajeSweetalert2('error', 'El QR escaneado no es correcto.');
+        this.mensajeSweetalert2('error', 'El QR o codigo no es correcto.');
       }
     });
   }
@@ -148,6 +157,23 @@ export class AppComponent {
 
   toggleTorch() {
     this.torchEnabled = !this.torchEnabled;
+  }
+
+  onClickMostrarScan(mostrarScan: boolean, mostrarCodigo: boolean) {
+    this.mostrarScan = mostrarScan;
+    this.mostrarCodigo = mostrarCodigo;
+    this.isData = false;
+    this.codigoEscaneado = [];
+  }
+
+  onClickValidarCodigo() {
+    if (this.codigoEscaneadoInput.trim() === '') {
+      this.mensajeSweetalert2('error', 'Por favor, ingrese un código válido.');
+      return;
+    }
+
+    this.escaneoExitoso(this.codigoEscaneadoInput);
+    this.codigoEscaneadoInput = ''; // Limpiar el campo de entrada después de la validación
   }
 
 }

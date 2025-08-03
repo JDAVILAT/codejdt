@@ -28,9 +28,26 @@
             <h2 class="m-0 p-1"> OF YOUR PRODUCT AND </h2>
             <h2 class="m-0 p-1"> VALIDATE ITS AUTHENTICITY </h2>
         </div>
-        <div class="col-12 mb-4 text-center" *ngIf="!mostrarEscaner && !isData">
+
+        <div class="col-12 mb-4 text-center example-button-row">
+            <button mat-raised-button color="primary" (click)="onClickMostrarScan(true,false)">Camera Scan</button>
+            <button mat-raised-button color="primary" (click)="onClickMostrarScan(false,true)">Enter Code</button>
+        </div>
+
+        <div class="col-12 mb-4 text-center" *ngIf="(!mostrarEscaner && !isData) && mostrarScan">
             <img src="assets/images/proLab/qrProlab.png">
         </div>
+
+        <div class="col-12 mb-4 text-center" *ngIf="mostrarCodigo && !isData">
+            <mat-form-field class="example-full-width">
+                <mat-label>Enter the code</mat-label>
+                <input matInput placeholder="Alphanumeric code" [(ngModel)]="codigoEscaneadoInput"
+                    (keyup.enter)="onClickValidarCodigo()">
+            </mat-form-field>
+            <button mat-raised-button color="primary" (click)="onClickValidarCodigo()" [disabled]="
+                !codigoEscaneadoInput">Validate Code</button>
+        </div>
+
         <div class="col-12 mb-4 text-center card-producto" *ngIf="isData">
             <div class="fake-descr">
                 <p class="data-producto">Producto: <span>{{codigoEscaneado[0]?.product}}</span></p>
@@ -42,11 +59,11 @@
                     matTooltipHideDelay="100000" (click)="onClickDescargarPdf(codigoEscaneado[0]?.product)"></i>
             </div>
         </div>
-        <div class="col-12 m-auto text-center mb-4">
+        <div class="col-12 m-auto text-center mb-4" *ngIf="mostrarScan">
             <zxing-scanner *ngIf="mostrarEscaner" [formats]="allowedFormats" (scanSuccess)="escaneoExitoso($event)"
                 [device]="selectedDevice" (scanError)="mensajeErrorCamera($event)"
                 (camerasFound)="onCamerasFound($event)" [autoFocusEnabled]="true" [timeBetweenScans]="500"
-                [videoConstraints]="videoConstraints">
+                [videoConstraints]="videoConstraints" [tryHarder]="true">
             </zxing-scanner>
             <button class="scan-button" (click)="activarEscaner()">SCAN HERE</button>
             <p class="description_qr text-center m-4"> FIND THE QR ON THE PACKAGING OF YOUR

@@ -165,7 +165,7 @@ span {
     color: black;
 }
 
-.pdfEstyle{
+.pdfEstyle {
     color: #045AB8;
     font-size: 50px;
     margin-left: 0;
@@ -199,4 +199,20 @@ span {
         margin: 15px auto 50px 15px;
     }
 
+}
+
+.example-button-row button,
+.example-button-row a {
+    margin-right: 20px;
+}
+
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 50%;
+}
+
+.example-full-width {
+    margin-right: 20px;
+    width: 50%;
 }
