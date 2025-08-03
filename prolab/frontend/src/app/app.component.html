@@ -1,0 +1,111 @@
+<router-outlet></router-outlet>
+<div class="container">
+    <div class="row contenedor">
+        <div class="col-6 m-auto">
+            <img src="assets/images/proLab/proLab.webp" width="200px" height="30px" />
+        </div>
+        <div class="col-6 m-auto text-right">
+            <img src="assets/images/proLab/escudo1.png" width="70px" height="50px" />
+        </div>
+    </div>
+    <div class="row cardContent">
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 m-auto text-center mb-4">
+            <b class="m-1 p-0">
+                <h1>AUTHENTICITY</h1>
+            </b>
+            <p class="m-2 p-0">We know how important it is for you to have genuine, high-quality products. Here you can
+                verify the authenticity of the products you have purchased, guaranteeing that they meet the highest
+                standards of safety and effectiveness. Simply follow the steps below to confirm that your product is
+                legitimate."</p>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 m-0 p-0 mb-4">
+            <img src="assets/images/proLab/escudo.webp" height="300px" width="100%" />
+        </div>
+    </div>
+    <div class="row imagenLineas">
+        <div class="col-12 text-center m-0 p-5 mb-4">
+            <h2 class="m-0 p-1"> SCAN THE QR CODE </h2>
+            <h2 class="m-0 p-1"> OF YOUR PRODUCT AND </h2>
+            <h2 class="m-0 p-1"> VALIDATE ITS AUTHENTICITY </h2>
+        </div>
+        <div class="col-12 mb-4 text-center" *ngIf="!mostrarEscaner && !isData">
+            <img src="assets/images/proLab/qrProlab.png">
+        </div>
+        <div class="col-12 mb-4 text-center card-producto" *ngIf="isData">
+            <div class="fake-descr">
+                <p class="data-producto">Producto: <span>{{codigoEscaneado[0]?.product}}</span></p>
+                <p class="data-producto">Contenido: <span>{{codigoEscaneado[0]?.description}}</span></p>
+                <p class="data-producto">Lote: <span>{{codigoEscaneado[0]?.content}}</span></p>
+                <p class="data-producto">Exp: <span>{{codigoEscaneado[0].expirationDate}}</span></p>
+                <p class="data-producto">N° consultas: <span>{{codigoEscaneado[0].numberOfSearches}}</span></p>
+                <i class="bi bi-file-pdf-fill pdfEstyle" matTooltip="Descargar PDF" [matTooltipPosition]="'after'"
+                    matTooltipHideDelay="100000" (click)="onClickDescargarPdf(codigoEscaneado[0]?.product)"></i>
+            </div>
+        </div>
+        <div class="col-12 m-auto text-center mb-4">
+            <zxing-scanner *ngIf="mostrarEscaner" [formats]="allowedFormats" (scanSuccess)="escaneoExitoso($event)"
+                [device]="selectedDevice" (scanError)="mensajeErrorCamera($event)"
+                (camerasFound)="onCamerasFound($event)" [autoFocusEnabled]="true" [timeBetweenScans]="500"
+                [videoConstraints]="videoConstraints">
+            </zxing-scanner>
+            <button class="scan-button" (click)="activarEscaner()">SCAN HERE</button>
+            <p class="description_qr text-center m-4"> FIND THE QR ON THE PACKAGING OF YOUR
+                PRODUCT, CHECK THE INSTRUCTIONS </p>
+        </div>
+
+    </div>
+    <div class="row imagenFondo">
+        <div class="col-12 text-center m-auto text-container mb-4">
+            <h1 class="description m-0 p-1"> WHY </h1>
+            <h1 class="description m-0 p-1"> AUTHENTICATE </h1>
+            <h1 class="description m-0 p-1"> YOUR PRODUCT? </h1>
+            <p class="description_title">
+                Write a paragraph that talks about your company here. You can talk about your company's background,
+                history, mission, vision, or philosophy. Anything that will introduce your brand's persona to your
+                clients. This will help build a connection between you and them, that hopefully leads into a working
+                relationship.
+            </p>
+        </div>
+    </div>
+    <div class="row fondColor">
+        <div class="col-12 text-center m-auto mb-4">
+            <h2 class="descriptionGeneral m-5 p-1"> Frequently Asked Questions (FAQ) </h2>
+            <h2 class="description1 m-0 p-1"> WHAT DO I DO IF THE CODE IS INVALID? </h2>
+            <p class="description_1">
+                If your code is not recognized by our system, verify that you have entered it correctly. If the problem
+                persists, please contact us for help.
+            </p>
+            <h2 class="description1 m-0 p-1"> WHAT HAPPENS IF I LOST MY AUTHENTICATION CODE? </h2>
+            <p class="description_1">
+                The authentication code is affixed to the product packaging. If you have lost it, we will not be able to
+                verify the authenticity. We suggest that you always save the product packaging until you are sure of its
+                authenticity.
+            </p>
+            <h2 class="description1 m-0 p-1"> HOW DO I KNOW IF MY PRODUCT WAS COUNTERFEIT? </h2>
+            <p class="description_1">
+                If you receive a result indicating that the product is not authentic, we suggest that you do not use it
+                and contact us to investigate further.
+            </p>
+        </div>
+    </div>
+    <div class="row fondColor">
+        <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12 col-xs-12 mb-4">
+            <h2 class="descriptionGeneral  p-1"> CONTACT US </h2>
+            <button class="rounded-button">Contact Us</button>
+            <br><br><br><br>
+            <p class="phone"> PHONE </p>
+            <p class="phone"> (123) 456-7890 </p>
+            <br>
+            <p class="phone"> EMAIL </p>
+            <a class="phone" href="mailto:hello&#64;reallygreatsite.com"> hello&#64;reallygreatsite.com </a>
+            <br><br><br>
+            <p class="phone"> SOCIAL </p>
+            <i class="bi bi-facebook"></i>
+            <i class="bi bi-twitter"></i>
+            <i class="bi bi-instagram"></i>
+        </div>
+        <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12 col-xs-12 m-0 p-0 ">
+            <img src="assets/images/proLab/s2.jpg" height="450px" width="100%" />
+        </div>
+    </div>
+</div>

@@ -1,0 +1,202 @@
+.contenedor {
+    background: black;
+    height: 100px;
+}
+
+h1 {
+    font-size: 40px;
+    font-weight: 1000;
+}
+
+p {
+    text-align: justify;
+}
+
+h2 {
+    font-size: 35px;
+    font-weight: 500;
+}
+
+.scan-button {
+    background-color: #1a1a1a;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+.scan-button:hover {
+    background-color: white;
+    color: #1a1a1a;
+    border: 2px solid #1a1a1a;
+}
+
+.imagenLineas {
+    background-image: url('/assets/images/proLab/linea.png');
+    background-repeat: no-repeat;
+    background-size: 20% 50vh;
+}
+
+zxing-scanner {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    margin: 0 auto;
+}
+
+
+.description_qr {
+    font-size: 18px;
+    font-weight: 550;
+}
+
+.imagenFondo {
+    background-image: url('/assets/images/proLab/s3.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.text-container {
+    color: white;
+    font-size: 3vw;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+.description {
+    color: #52C0DF;
+    font-weight: 1000;
+}
+
+.description_title {
+    color: white;
+    font-size: 20px;
+    margin: 40px 150px auto 150px;
+}
+
+.fondColor {
+    background: black;
+}
+
+.descriptionGeneral {
+    color: #52C0DF;
+    font-weight: 1000;
+    margin-left: 29px;
+    margin-top: 30px;
+}
+
+.description_1 {
+    color: white;
+    font-size: 20px;
+    margin: auto 150px 50px 150px;
+}
+
+.description1 {
+    color: #52C0DF;
+    font-size: 25px;
+}
+
+.fondColor {
+    background: #1B1A16;
+}
+
+.rounded-button {
+    background-color: #1a1a1a;
+    color: white;
+    border: 2px solid white;
+    border-radius: 50px;
+    padding: 10px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: none;
+    margin-left: 29px;
+}
+
+.rounded-button:hover {
+    background-color: white;
+    color: #1a1a1a;
+}
+
+.phone {
+    margin-left: 29px;
+    color: white;
+    font-size: 18px;
+}
+
+i {
+    color: white;
+    font-size: 30px;
+    margin-left: 30px;
+}
+
+.fake-descr {
+    background: #fdfdfd;
+    padding-left: 15px;
+    padding-top: 15px;
+    border-radius: 15px;
+    padding-bottom: 15px;
+    width: 300px;
+    margin: auto;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.data-producto {
+    margin-top: 15px;
+    margin-bottom: 25px;
+    font-size: 30px;
+    color: #045AB8;
+}
+
+span {
+    font-size: 20px;
+    color: black;
+}
+
+.pdfEstyle{
+    color: #045AB8;
+    font-size: 50px;
+    margin-left: 0;
+}
+
+@media (max-width: 768px) {
+
+    h1 {
+        font-size: 9vw;
+    }
+
+    .descriptionGeneral {
+        margin-left: 10px;
+    }
+
+    .rounded-button {
+        margin-left: 10px;
+    }
+
+    .phone {
+        margin-left: 10px;
+    }
+
+    .description_title {
+        margin: 40px auto auto auto;
+    }
+
+    .description_1 {
+        color: white;
+        font-size: 15px;
+        margin: 15px auto 50px 15px;
+    }
+
+}
