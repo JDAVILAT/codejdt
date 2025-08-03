@@ -1,0 +1,6 @@
+@api.prolabcheck_HostAddress = http://localhost:5210
+
+GET {{api.prolabcheck_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
