@@ -27,7 +27,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowSpecificOrigins",
     builder =>
     {
-        builder.WithOrigins("https://prolabcheck.com") // Agrega las URL que deseas permitir
+        builder.WithOrigins("https://prolabcheck.com", "https://www.prolabcheck.com") // Agrega las URL que deseas permitir
                .AllowAnyHeader()
                .AllowAnyMethod();
     });
